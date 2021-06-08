@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>标尺</title>
+    <title>百度01</title>
     <script src="../dist/openLayers.js"></script>
     <link rel="stylesheet" href="../css.css">
     <link rel="stylesheet" href="../node_modules/ol/ol.css">
@@ -29,7 +29,7 @@
             }
             var z = tileCoord[0];
             var x = tileCoord[1];
-            var y = -tileCoord[2];
+            var y = -tileCoord[2] - 1;
 
             if(x<0){
                 x = "M"+(-x);
@@ -50,7 +50,7 @@
         target: 'map',
         layers: [baidu_layer],
         view: new ol.View({
-            center:  [12959773,4853101],
+            center:  ol.proj.transform([112, 21], 'EPSG:4326', 'EPSG:3857'),
             zoom: 12
         })
     });

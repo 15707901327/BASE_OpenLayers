@@ -7,17 +7,19 @@ import {ScaleLine, defaults as defaultControls} from 'ol/control';
 import TileImage from "ol/source/TileImage";
 import Tile from "ol/layer/Tile";
 import TileGrid from "ol/tilegrid/TileGrid";
+import XYZ from "ol/source/XYZ";
 
 let openLayers = {
     Map: Map,
     View: View,
-    Tile:Tile,
+    Tile: Tile,
     TileLayer: TileLayer,
     TileWMS: TileWMS,
-    TileImage:TileImage,
-    TileGrid:TileGrid,
+    TileImage: TileImage,
+    TileGrid: TileGrid,
     ScaleLine: ScaleLine,
-    proj:proj,
+    proj: proj,
+    XYZ: XYZ,
     defaultControls: defaultControls
 };
 

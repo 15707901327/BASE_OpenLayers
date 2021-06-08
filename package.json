@@ -9,7 +9,7 @@
   },
   "license": "ISC",
   "dependencies": {
-    "ol": "^6.5.0"
+    "ol": "6.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.4.0",
