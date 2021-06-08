@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>标尺</title>
+    <script src="../dist/openLayers.js"></script>
+    <link rel="stylesheet" href="../css.css">
+    <link rel="stylesheet" href="../node_modules/ol/ol.css">
+</head>
+<body>
+<div id="map" class="map"></div>
+<script>
+    var layers = [
+        new ol.TileLayer({
+            source: new ol.TileWMS({
+                url: 'https://ahocevar.com/geoserver/wms',
+                params: {
+                    'LAYERS': 'ne:NE1_HR_LC_SR_W_DR',
+                    'TILED': true,
+                },
+            }),
+        }) ];
+
+    var map = new ol.Map({
+        controls: ol.defaultControls().extend([
+            new ol.ScaleLine({
+                units: 'degrees',
+            }) ]),
+        layers: layers,
+        target: 'map',
+        view: new ol.View({
+            projection: 'EPSG:4326',
+            center: [0, 0],
+            zoom: 2,
+        }),
+    });
+</script>
+</body>
+</html>
