@@ -5,7 +5,8 @@
   "sideEffects": true,
   "main": "index.js",
   "scripts": {
-    "build-openLayers": "webpack --env=openLayers --config ./webpack.config.babel.js --mode production -require @babel/register"
+    "build-openLayers": "webpack --env=openLayers --config ./webpack.config.babel.js --mode production -require @babel/register",
+    "build-openLayers_6.5.0": "webpack --env=openLayers_6.5.0 --config ./webpack.config.babel.js --mode production -require @babel/register"
   },
   "license": "ISC",
   "dependencies": {

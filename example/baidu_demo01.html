@@ -1,59 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>百度01</title>
-    <script src="../dist/openLayers.js"></script>
-    <link rel="stylesheet" href="../css.css">
-    <link rel="stylesheet" href="../node_modules/ol/ol.css">
+	<meta charset="UTF-8">
+	<title>百度01</title>
+	<script src="../dist/openLayers.js"></script>
+	<link rel="stylesheet" href="../css.css">
+	<link rel="stylesheet" href="../node_modules/ol/ol.css">
 </head>
 <body>
 <div id="map" class="map"></div>
 <script>
-    var projection = ol.proj.get("EPSG:3857");
-    var resolutions = [];
-    for(var i=0; i<19; i++){
-        resolutions[i] = Math.pow(2, 18-i);
-    }
-    var tilegrid  = new ol.TileGrid({
-        origin: [0,0],
-        resolutions: resolutions
-    });
+	var projection = ol.proj.get("EPSG:3857");
+	var resolutions = [];
+	for (var i = 0; i < 19; i++) {
+		resolutions[i] = Math.pow(2, 18 - i);
+	}
+	var tilegrid = new ol.TileGrid({
+		origin: [0, 0],
+		resolutions: resolutions
+	});
 
-    var baidu_source = new ol.TileImage({
-        projection: projection,
-        tileGrid: tilegrid,
-        tileUrlFunction: function(tileCoord, pixelRatio, proj){
-            if(!tileCoord){
-                return "";
-            }
-            var z = tileCoord[0];
-            var x = tileCoord[1];
-            var y = -tileCoord[2] - 1;
+	var baidu_source = new ol.TileImage({
+		projection: projection,
+		tileGrid: tilegrid,
+		tileUrlFunction: function (tileCoord, pixelRatio, proj) {
+			if (!tileCoord) {
+				return "";
+			}
+			var z = tileCoord[0];
+			var x = tileCoord[1];
+			var y = -tileCoord[2] - 1;
 
-            if(x<0){
-                x = "M"+(-x);
-            }
-            if(y<0){
-                y = "M"+(-y);
-            }
+			if (x < 0) {
+				x = "M" + (-x);
+			}
+			if (y < 0) {
+				y = "M" + (-y);
+			}
 
-            return "http://online3.map.bdimg.com/onlinelabel/?qt=tile&x="+x+"&y="+y+"&z="+z+"&styles=pl&udt=20151021&scaler=2&p=1";
-        }
-    });
+			return "http://online3.map.bdimg.com/onlinelabel/?qt=tile&x=" + x + "&y=" + y + "&z=" + z + "&styles=pl&udt=20151021&scaler=2&p=1";
+		}
+	});
 
-    var baidu_layer = new ol.Tile({
-        source: baidu_source
-    });
+	var baidu_layer = new ol.Tile({
+		source: baidu_source
+	});
 
-    var map = new ol.Map({
-        target: 'map',
-        layers: [baidu_layer],
-        view: new ol.View({
-            center:  ol.proj.transform([112, 21], 'EPSG:4326', 'EPSG:3857'),
-            zoom: 12
-        })
-    });
+	var map = new ol.Map({
+		target: 'map',
+		layers: [baidu_layer],
+		view: new ol.View({
+			center: ol.proj.transform([112, 21], 'EPSG:4326', 'EPSG:3857'),
+			zoom: 12
+		})
+	});
 </script>
 </body>
 </html>
